@@ -1,12 +1,9 @@
 s/(.*)(<img.*\/>)(.*)/ /g
 /^[[:space:]]*$/d
-s/(<td .*>)(.*)(<\/span.*)/\2/g
-s/.*<\/td.*//g
-s/<td style="font-.*/ /g
-s/<td .*//g
-s/<td>$//g
-s/(.*">)(.*)(<\/a>)/PKMN\:\2/g
-/^[[:space:]]*$/d
-/PKMN/! s/(.*)/T:\1/g
-s/T:.*/\0,/g
-s/PKMN:.*/}{N:\0,/g
+s/<td colspan.*>(.*)<\/span.*/"T1":"\1",/g
+s/<td style="background.*>(.*)<\/span.*/"T2":"\1",/g
+/<\/td>$/d
+s/<td> <a.*>(.*)<\/.*/},{"N":"\1",/g
+/<.*/d
+s/\},\{(.*Bulbasaur.*)/\[\{\1/
+s/("T2":.*),/\1/g
